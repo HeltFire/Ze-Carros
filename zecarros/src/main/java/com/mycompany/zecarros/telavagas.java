@@ -4,6 +4,15 @@
  */
 package com.mycompany.zecarros;
 import javax.swing.JOptionPane;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import org.bson.Document;
+import static com.mongodb.client.model.Filters.eq;
+import com.mongodb.client.*;
+import org.bson.Document;
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 /**
  *
  * @author Vitey
@@ -15,6 +24,11 @@ public class telavagas extends javax.swing.JFrame {
      */
     public telavagas() {
         initComponents();
+            atualizarvagas.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            atualizarvagasActionPerformed(evt);
+        }
+    });
      }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,9 +62,8 @@ public class telavagas extends javax.swing.JFrame {
         vaga10label = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        buttoncadastemp = new javax.swing.JButton();
-        txtcadastemp = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        atualizarvagas = new javax.swing.JButton();
+        voltar = new javax.swing.JButton();
 
         voltarvagas.setText("Voltar");
         voltarvagas.addActionListener(new java.awt.event.ActionListener() {
@@ -61,70 +74,61 @@ public class telavagas extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        vaga1combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponível" }));
+        vaga1combobox.setToolTipText("");
         vaga1combobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vaga1comboboxActionPerformed(evt);
             }
         });
 
-        vaga2combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponível" }));
         vaga2combobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vaga2comboboxActionPerformed(evt);
             }
         });
 
-        vaga3combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponível" }));
         vaga3combobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vaga3comboboxActionPerformed(evt);
             }
         });
 
-        vaga4combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponível" }));
         vaga4combobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vaga4comboboxActionPerformed(evt);
             }
         });
 
-        vaga5combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponível" }));
         vaga5combobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vaga5comboboxActionPerformed(evt);
             }
         });
 
-        vaga6combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponível" }));
         vaga6combobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vaga6comboboxActionPerformed(evt);
             }
         });
 
-        vaga7combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponível" }));
         vaga7combobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vaga7comboboxActionPerformed(evt);
             }
         });
 
-        vaga8combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponível" }));
         vaga8combobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vaga8comboboxActionPerformed(evt);
             }
         });
 
-        vaga9combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponível" }));
         vaga9combobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vaga9comboboxActionPerformed(evt);
             }
         });
 
-        vaga10combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponível" }));
         vaga10combobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vaga10comboboxActionPerformed(evt);
@@ -172,14 +176,19 @@ public class telavagas extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        buttoncadastemp.setText("Cadastrar");
-        buttoncadastemp.addActionListener(new java.awt.event.ActionListener() {
+        atualizarvagas.setText("Atualizar");
+        atualizarvagas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttoncadastempActionPerformed(evt);
+                atualizarvagasActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Placa");
+        voltar.setText("Voltar");
+        voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -187,9 +196,9 @@ public class telavagas extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(vaga3combobox, javax.swing.GroupLayout.Alignment.LEADING, 0, 176, Short.MAX_VALUE)
                             .addComponent(vaga4combobox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -203,26 +212,23 @@ public class telavagas extends javax.swing.JFrame {
                             .addComponent(vaga5combobox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(vaga7label)
+                            .addComponent(vaga6label)
+                            .addComponent(vaga9label)
+                            .addComponent(vaga8label)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(vaga6combobox, javax.swing.GroupLayout.Alignment.LEADING, 0, 176, Short.MAX_VALUE)
                                 .addComponent(vaga7combobox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(vaga8combobox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(vaga9combobox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(vaga10label, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(vaga10combobox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(vaga7label)
-                            .addComponent(vaga6label)
-                            .addComponent(vaga9label)
-                            .addComponent(vaga8label)))
+                                .addComponent(vaga10combobox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(107, 107, 107)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtcadastemp, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(buttoncadastemp)))))
-                .addContainerGap(53, Short.MAX_VALUE))
+                        .addComponent(atualizarvagas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)
+                        .addComponent(voltar)
+                        .addGap(61, 61, 61))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,16 +277,15 @@ public class telavagas extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(vaga10label)
                         .addGap(34, 34, 34)))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(12, 12, 12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtcadastemp, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttoncadastemp, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(41, Short.MAX_VALUE))
+                    .addComponent(atualizarvagas)
+                    .addComponent(voltar))
+                .addGap(46, 46, 46))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void vaga1comboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vaga1comboboxActionPerformed
@@ -329,23 +334,53 @@ public class telavagas extends javax.swing.JFrame {
     this.dispose();
     }//GEN-LAST:event_voltarvagasActionPerformed
 
-    private void buttoncadastempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttoncadastempActionPerformed
-    String placa = txtcadastemp.getText();
-    if(txtcadastemp.getText().isEmpty()){
-         JOptionPane.showMessageDialog(this, "O campo de texto está vazio!", "Aviso", JOptionPane.WARNING_MESSAGE);
-    }else{
-        JOptionPane.showMessageDialog(this, "Veiculo cadastrado!", "Aviso", JOptionPane.WARNING_MESSAGE);
-    vaga1combobox.addItem(placa);
-    vaga2combobox.addItem(placa);
-    vaga3combobox.addItem(placa);
-    vaga4combobox.addItem(placa);
-    vaga5combobox.addItem(placa);
-    vaga6combobox.addItem(placa);
-    vaga7combobox.addItem(placa);
-    vaga8combobox.addItem(placa);
-    vaga9combobox.addItem(placa);
-    vaga10combobox.addItem(placa);}
-    }//GEN-LAST:event_buttoncadastempActionPerformed
+    private void atualizarvagasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarvagasActionPerformed
+       
+    try {
+        MongoDatabase database = MongoDBConnection.getDatabase();
+         if (database == null) {
+            JOptionPane.showMessageDialog(this, "Não foi possível conectar ao banco de dados.", "Erro de Conexão", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        List<String> placas = new ArrayList<>();
+        MongoCollection<Document> collection = database.getCollection("placas");
+        
+        FindIterable<Document> documents = collection.find();
+        
+        for(Document doc : documents) {
+            placas.add(doc.getString("placa"));
+        }
+        
+        for(int i = 0; i < placas.size(); i++){
+            String item = vaga1combobox.getItemAt(i);
+            String placa = placas.get(i);
+            if(placa.equals(item)){
+                
+            }else{
+                    vaga1combobox.addItem(placa);
+                    vaga2combobox.addItem(placa);
+                    vaga3combobox.addItem(placa);
+                    vaga4combobox.addItem(placa);
+                    vaga5combobox.addItem(placa);
+                    vaga6combobox.addItem(placa);
+                    vaga7combobox.addItem(placa);
+                    vaga8combobox.addItem(placa);
+                    vaga9combobox.addItem(placa);
+                    vaga10combobox.addItem(placa);
+            }
+        }
+        
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Erro ao tentar fazer login: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        e.printStackTrace();
+    }
+    }//GEN-LAST:event_atualizarvagasActionPerformed
+
+    private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
+    telainicial telaInicial = new telainicial();
+    telaInicial.setVisible(true);
+    this.dispose();
+    }//GEN-LAST:event_voltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -383,11 +418,9 @@ public class telavagas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttoncadastemp;
+    private javax.swing.JButton atualizarvagas;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtcadastemp;
     public javax.swing.JComboBox<String> vaga10combobox;
     private javax.swing.JLabel vaga10label;
     public javax.swing.JComboBox<String> vaga1combobox;
@@ -408,6 +441,7 @@ public class telavagas extends javax.swing.JFrame {
     private javax.swing.JLabel vaga8label;
     public javax.swing.JComboBox<String> vaga9combobox;
     private javax.swing.JLabel vaga9label;
+    private javax.swing.JButton voltar;
     private javax.swing.JButton voltarvagas;
     // End of variables declaration//GEN-END:variables
 }

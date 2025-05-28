@@ -4,15 +4,17 @@
  */
 package com.mycompany.zecarros;
 
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import org.bson.Document;
+import javax.swing.JOptionPane;
+import static com.mongodb.client.model.Filters.eq;
 /**
  *
  * @author Vitey
  */
 public class telainicial extends javax.swing.JFrame {
 
-    /**
-     * Creates new form telainicial
-     */
     public telainicial() {
         initComponents();
     }
@@ -91,19 +93,18 @@ public class telainicial extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cadastrobuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrobuttonActionPerformed
            // Cria e exibe a tela de cadastro
         telacadastro telaCadastro = new telacadastro();
         telaCadastro.setVisible(true);
-
     }//GEN-LAST:event_cadastrobuttonActionPerformed
 
     private void vagasbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vagasbuttonActionPerformed
         telavagas telaVagas = new telavagas();
         telaVagas.setVisible(true);
-
     }//GEN-LAST:event_vagasbuttonActionPerformed
 
     /**

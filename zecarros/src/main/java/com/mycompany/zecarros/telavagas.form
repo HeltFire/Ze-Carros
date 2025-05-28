@@ -16,7 +16,7 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -34,10 +34,10 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="vaga3combobox" alignment="0" pref="176" max="32767" attributes="0"/>
                           <Component id="vaga4combobox" alignment="0" max="32767" attributes="0"/>
@@ -52,6 +52,10 @@
                       </Group>
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="vaga7label" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="vaga6label" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="vaga9label" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="vaga8label" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                               <Component id="vaga6combobox" alignment="0" pref="176" max="32767" attributes="0"/>
                               <Component id="vaga7combobox" alignment="0" max="32767" attributes="0"/>
@@ -60,25 +64,16 @@
                               <Component id="vaga10label" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="vaga10combobox" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="vaga7label" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="vaga6label" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="vaga9label" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="vaga8label" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="txtcadastemp" min="-2" pref="151" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="buttoncadastemp" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="atualizarvagas" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="227" max="32767" attributes="0"/>
+                      <Component id="voltar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="53" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -133,14 +128,12 @@
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtcadastemp" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                  <Component id="buttoncadastemp" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="atualizarvagas" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="voltar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="41" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -148,11 +141,7 @@
   <SubComponents>
     <Component class="javax.swing.JComboBox" name="vaga1combobox">
       <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="1">
-            <StringItem index="0" value="Dispon&#xed;vel"/>
-          </StringArray>
-        </Property>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vaga1comboboxActionPerformed"/>
@@ -163,13 +152,6 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JComboBox" name="vaga2combobox">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="1">
-            <StringItem index="0" value="Dispon&#xed;vel"/>
-          </StringArray>
-        </Property>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vaga2comboboxActionPerformed"/>
       </Events>
@@ -179,13 +161,6 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JComboBox" name="vaga3combobox">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="1">
-            <StringItem index="0" value="Dispon&#xed;vel"/>
-          </StringArray>
-        </Property>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vaga3comboboxActionPerformed"/>
       </Events>
@@ -195,13 +170,6 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JComboBox" name="vaga4combobox">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="1">
-            <StringItem index="0" value="Dispon&#xed;vel"/>
-          </StringArray>
-        </Property>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vaga4comboboxActionPerformed"/>
       </Events>
@@ -211,13 +179,6 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JComboBox" name="vaga5combobox">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="1">
-            <StringItem index="0" value="Dispon&#xed;vel"/>
-          </StringArray>
-        </Property>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vaga5comboboxActionPerformed"/>
       </Events>
@@ -227,13 +188,6 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JComboBox" name="vaga6combobox">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="1">
-            <StringItem index="0" value="Dispon&#xed;vel"/>
-          </StringArray>
-        </Property>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vaga6comboboxActionPerformed"/>
       </Events>
@@ -243,13 +197,6 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JComboBox" name="vaga7combobox">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="1">
-            <StringItem index="0" value="Dispon&#xed;vel"/>
-          </StringArray>
-        </Property>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vaga7comboboxActionPerformed"/>
       </Events>
@@ -259,13 +206,6 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JComboBox" name="vaga8combobox">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="1">
-            <StringItem index="0" value="Dispon&#xed;vel"/>
-          </StringArray>
-        </Property>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vaga8comboboxActionPerformed"/>
       </Events>
@@ -275,13 +215,6 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JComboBox" name="vaga9combobox">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="1">
-            <StringItem index="0" value="Dispon&#xed;vel"/>
-          </StringArray>
-        </Property>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vaga9comboboxActionPerformed"/>
       </Events>
@@ -291,13 +224,6 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JComboBox" name="vaga10combobox">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="1">
-            <StringItem index="0" value="Dispon&#xed;vel"/>
-          </StringArray>
-        </Property>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vaga10comboboxActionPerformed"/>
       </Events>
@@ -394,20 +320,21 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="buttoncadastemp">
+    <Component class="javax.swing.JButton" name="atualizarvagas">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Cadastrar"/>
+        <Property name="text" type="java.lang.String" value="Atualizar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttoncadastempActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="atualizarvagasActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtcadastemp">
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JButton" name="voltar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Placa"/>
+        <Property name="text" type="java.lang.String" value="Voltar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="voltarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
