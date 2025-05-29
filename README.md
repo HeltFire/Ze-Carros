@@ -1,51 +1,66 @@
-# Ze-Carros
+#  ZeCarros – Sistema de Gerenciamento de Estacionamento
+
 
 ```bash
 ## README - ZeCarros: Sistema de Gerenciamento de Vagas de Estacionamento
 ```
 
-## Descrição do Projeto
+##  Descrição do Projeto
 
-O ZeCarros é um sistema de gerenciamento de vagas de estacionamento desenvolvido em Java utilizando a biblioteca Swing para interface gráfica. O sistema simula um estacionamento com 10 vagas, representadas por JComboBoxes, permitindo o cadastro e seleção de placas de veículos.
+**ZeCarros** é um sistema de gerenciamento de vagas de estacionamento com autenticação de usuários, desenvolvido em **Java** com **Swing** para interface gráfica e **MongoDB** para persistência de dados. Ele permite que usuários se cadastrem, façam login e gerenciem ocupações de até **10 vagas** de estacionamento.
 
-## Funcionalidades Atuais
+##  Funcionalidades
 
-Visualização de Vagas:
-10 vagas de estacionamento representadas por JComboBoxes.
-Cadastro de Placas:
-Campo de texto (JTextField) para inserir a placa do veículo.
-Botão "Enviar" para adicionar a placa à lista de opções dos JComboBoxes.
-Seleção de Placas:
-Cada JComboBox permite selecionar uma placa cadastrada, simulando a ocupação da vaga.
+- **Login de Usuário**
+- **Cadastro de Usuário**
+- **Cadastro de Placas de Veículos**
+- **Associação de Placas às Vagas (JComboBox)**
+- **Interface gráfica com Java Swing**
+- **Conexão com MongoDB**
 
-## Tecnologias Utilizadas
+##  Telas e Fluxo do Sistema
 
-Java,
-Swing (javax.swing)
+- `LoginScreen.java` – Tela de autenticação do usuário  
+- `RegisterScreen.java` – Tela de registro de novo usuário  
+- `telainicial.java` – Tela principal do sistema após login  
+- `telacadastro.java` – Tela para cadastro de placas de veículos  
+- `telavagas.java` – Tela para visualização e ocupação das vagas  
+- `Zecarros.java` – Versão anterior com visualização gráfica das vagas  
+- `MongoDBConnection.java` – Conexão com MongoDB
 
-## Como Executar o Projeto
+##  Tecnologias Utilizadas
 
--Pré-requisitos:
-Java Development Kit (JDK) instalado.
--Compilação:
-Utilize um ambiente de desenvolvimento integrado (IDE) como Eclipse, IntelliJ IDEA ou NetBeans para compilar o código-fonte Java.
-Alternativamente, compile via linha de comando utilizando o javac.
--Execução:
-Execute a classe principal do projeto a partir da IDE ou via linha de comando utilizando o java.
+- Java (JDK 8 ou superior)  
+- Swing (`javax.swing`)  
+- MongoDB  
+- Driver oficial MongoDB para Java
 
-## Estrutura do Código
+##  Como Executar o Projeto
 
-ZeCarros.java: Classe principal que contém a lógica da interface gráfica e funcionalidades do sistema.
-Componentes Swing:
-JComboBox: Para representar as vagas de estacionamento.
-JTextField: Para entrada de placas.
-JButton: Para adicionar placas.
-JPanel: Para organizar os componentes na tela.
-JFrame: Para gerar a tela da aplicação.
+### Pré-requisitos
 
-## Instruções de Uso
+- Java instalado (JDK 8+)
+- MongoDB em execução local ou remoto
+- Driver MongoDB para Java (`mongo-java-driver-x.y.z.jar`)  
+  → [Download via Maven Central](https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver)
 
-Ao iniciar o sistema, a interface gráfica exibirá as 10 vagas representadas por JComboBoxes.
-No campo de texto, insira a placa do veículo que deseja cadastrar.
-Clique no botão "Enviar" para adicionar a placa à lista de opções dos JComboBoxes.
-Selecione a placa desejada em cada JComboBox para simular a ocupação das vagas.
+
+##  Estrutura dos Arquivos
+
+```
+ZeCarros/
+LoginScreen.java
+RegisterScreen.java
+telainicial.java
+telacadastro.java
+telavagas.java
+Zecarros.java
+MongoDBConnection.java
+mongo-java-driver-<versão>.jar
+```
+
+##  Segurança e Validações
+
+- Validação de login e senha
+- Verificação de campos obrigatórios
+- Impede duplicação de placas
